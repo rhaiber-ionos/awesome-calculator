@@ -58,17 +58,20 @@ function App() {
 
   const handleMemoryStore = () => {
     setMemory(parseFloat(display));
+    console.log('Memory Stored:', parseFloat(display));
   };
 
   const handleMemoryRecall = () => {
     if (memory !== null) {
       setInput(memory.toString());
       setDisplay(memory.toString());
+      console.log('Memory Recalled:', memory);
     }
   };
 
   const handleMemoryClear = () => {
     setMemory(null);
+    console.log('Memory Cleared');
   };
 
   return (
@@ -142,6 +145,11 @@ function App() {
           <button className="bg-green-500 p-4 rounded text-white" onClick={handleMemoryClear}>
             MC
           </button>
+          {memory !== null && (
+            <div className="col-span-4 mb-2 text-right text-xl font-mono text-gray-500">
+              Memory: {memory}
+            </div>
+          )}
           <button className="col-span-4 bg-red-500 p-4 rounded text-white" onClick={handleClear}>
             Clear
           </button>
